@@ -19,8 +19,7 @@ public class FileHandlerController {
     private AmazonS3ClientService amazonS3ClientService;
 
     @PostMapping
-    public Map<String, String> uploadFile(@RequestPart(value = "file") MultipartFile file)
-    {
+    public Map<String, String> uploadFile(@RequestPart(value = "file") MultipartFile file) throws IOException {
         this.amazonS3ClientService.uploadFileToS3Bucket(file, true);
 
         Map<String, String> response = new HashMap<>();
